@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smaragat <smaragat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smaragat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:44:09 by smaragat          #+#    #+#             */
-/*   Updated: 2026/06/05 19:19:43 by smaragat         ###   ########.fr       */
+/*   Created: 2026/05/23 15:51:23 by smaragat          #+#    #+#             */
+/*   Updated: 2026/05/23 16:52:41 by smaragat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	void	*ptr;
-	size_t	total;
-
-	total = nmemb * size;
-	ptr = malloc(total);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, total);
-	return (ptr);
+	while (n--)
+	{
+		*(unsigned char *)dest = *(unsigned char *)src;
+		dest++;
+		src++;
+	}
+	return (dest);
 }
