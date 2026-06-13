@@ -6,7 +6,7 @@
 /*   By: smaragat <smaragat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 16:43:42 by smaragat          #+#    #+#             */
-/*   Updated: 2026/06/05 16:43:57 by smaragat         ###   ########.fr       */
+/*   Updated: 2026/06/13 17:40:28 by smaragat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,20 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	unsigned int	i;
+	unsigned char	ch;
 
+	ch = c;
+	if (!s)
+		return (NULL);
 	i = ft_strlen((char *)s);
-	if ((char)c == '\0')
+	if ((char)ch == '\0')
 		return ((char *)s);
-	while (s[i] != c)
+	while (i >= 0)
+	{
+		if (s[i] == ch)
+			return ((char *)&s[i]);
 		i--;
-	if (s[i] == (char)c)
-		return ((char *)&s[i]);
+	}
 	return (0);
 }

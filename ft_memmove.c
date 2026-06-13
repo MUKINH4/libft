@@ -6,7 +6,7 @@
 /*   By: smaragat <smaragat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:52:54 by smaragat          #+#    #+#             */
-/*   Updated: 2026/06/05 16:39:34 by smaragat         ###   ########.fr       */
+/*   Updated: 2026/06/13 17:05:06 by smaragat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,25 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*destination;
 	unsigned char	*source;
 
+	if (!dest || !src)
+		return (NULL);
+	if (dest == src || n == 0)
+		return (dest);
 	i = 0;
 	destination = (unsigned char *) dest;
 	source = (unsigned char *)src;
-	while (i < n)
+	if (destination < source)
 	{
-		destination[i] = source[i];
-		i++;
+		while (i < n)
+		{
+			destination[i] = source[i];
+			i++;
+		}
+	}
+	else
+	{
+		while (n--)
+			destination[n] = source[n];
 	}
 	return (dest);
 }

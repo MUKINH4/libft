@@ -6,13 +6,13 @@
 /*   By: smaragat <smaragat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 16:58:15 by smaragat          #+#    #+#             */
-/*   Updated: 2026/06/05 16:27:05 by smaragat         ###   ########.fr       */
+/*   Updated: 2026/06/13 18:06:56 by smaragat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	result;
