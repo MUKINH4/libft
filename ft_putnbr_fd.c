@@ -6,7 +6,7 @@
 /*   By: smaragat <smaragat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 19:25:58 by smaragat          #+#    #+#             */
-/*   Updated: 2026/06/08 17:26:34 by smaragat         ###   ########.fr       */
+/*   Updated: 2026/06/22 13:33:52 by smaragat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483647)
+	long	nb;
+
+	nb = n;
+	if (nb < 0)
 	{
-		write(fd, "-2147483647", 11);
-		return ;
+		ft_putchar_fd('-', fd);
+		nb = -nb;
 	}
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		n = -n;
-	}
-	if (n >= 10)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd((n % 10) + '0', fd);
+	if (nb >= 10)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd((nb % 10) + '0', fd);
 }

@@ -6,7 +6,7 @@
 /*   By: smaragat <smaragat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 16:41:21 by smaragat          #+#    #+#             */
-/*   Updated: 2026/06/13 16:50:53 by smaragat         ###   ########.fr       */
+/*   Updated: 2026/06/22 13:04:01 by smaragat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	*free_array(char **arr, size_t i)
 {
-	while (i < 0)
+	while (i > 0)
 	{
 		i--;
 		free(arr[i]);
@@ -32,7 +32,7 @@ static size_t	count_words(const char *s, char c)
 	count = 0;
 	while (s[i])
 	{
-		while (s[i] == c)
+		while (s[i] && s[i] == c)
 			i++;
 		if (s[i])
 			count++;
@@ -53,18 +53,20 @@ static char	**fill_array(char **arr, const char *s, char c)
 	start = 0;
 	while (s[i])
 	{
-		while (s[i] == c)
+		while (s[i] && s[i] == c)
 			i++;
-		if (!s[i])
-			break ;
+		start = i;
 		while (s[i] && s[i] != c)
 			i++;
-		arr[i] = ft_substr(s, start, i - start);
-		if (!arr[i])
-			return (free_array(arr, j));
-		j++;
+		if (i > start)
+		{
+			arr[j] = ft_substr(s, start, i - start);
+			if (!arr[j])
+				return (free_array(arr, j));
+			j++;
+		}
 	}
-	arr[i] = NULL;
+	arr[j] = NULL;
 	return (arr);
 }
 
@@ -74,7 +76,7 @@ char	**ft_split(const char *s, char c)
 	size_t	words;
 
 	words = count_words(s, c);
-	arr = (char **)malloc(words * sizeof(char *) + 1);
+	arr = (char **)malloc((words + 1) * sizeof(char *));
 	if (!arr)
 		return (NULL);
 	return (fill_array(arr, s, c));

@@ -6,7 +6,7 @@
 /*   By: smaragat <smaragat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 16:44:09 by smaragat          #+#    #+#             */
-/*   Updated: 2026/06/13 18:16:03 by smaragat         ###   ########.fr       */
+/*   Updated: 2026/06/22 12:41:56 by smaragat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*ptr;
 	size_t	total;
 
-	if (size <= 0)
+	if (size != 0 && nmemb > SIZE_MAX / size)
 		return (NULL);
 	total = nmemb * size;
-	if (size && (total / size) != nmemb)
-		return (NULL);
 	ptr = (void *)malloc(total);
 	if (!ptr)
 		return (NULL);

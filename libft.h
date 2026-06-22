@@ -6,7 +6,7 @@
 /*   By: smaragat <smaragat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 15:36:12 by smaragat          #+#    #+#             */
-/*   Updated: 2026/06/13 17:57:29 by smaragat         ###   ########.fr       */
+/*   Updated: 2026/06/22 12:43:31 by smaragat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
+# include <stdint.h>
 # include <stdlib.h>
 
 typedef struct s_list

@@ -6,7 +6,7 @@
 /*   By: smaragat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 19:24:06 by smaragat          #+#    #+#             */
-/*   Updated: 2026/06/08 18:23:32 by smaragat         ###   ########.fr       */
+/*   Updated: 2026/06/22 13:26:20 by smaragat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	while (*s)
-	{
-		write(fd, s, 1);
-		s++;
-	}
-	write(1, "\n", 1);
+	if (!s)
+		return ;
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

@@ -6,13 +6,13 @@
 /*   By: smaragat <smaragat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 16:42:45 by smaragat          #+#    #+#             */
-/*   Updated: 2026/06/13 16:52:45 by smaragat         ###   ########.fr       */
+/*   Updated: 2026/06/22 13:22:33 by smaragat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_count_digits(int n)
+static size_t	ft_count_digits(long n)
 {
 	size_t	i;
 
@@ -22,6 +22,8 @@ static size_t	ft_count_digits(int n)
 		n = -n;
 		i++;
 	}
+	if (n == 0)
+		return (1);
 	while (n > 0)
 	{
 		n /= 10;
@@ -33,25 +35,27 @@ static size_t	ft_count_digits(int n)
 char	*ft_itoa(int n)
 {
 	char	*str;
+	long	nb;
 	size_t	i;
 
-	i = ft_count_digits(n);
-	if (n == 0)
+	nb = n;
+	i = ft_count_digits(nb);
+	if (nb == 0)
 		return (ft_strdup("0"));
 	str = (char *)malloc(i + 1);
 	if (!str)
 		return (NULL);
-	if (n < 0)
+	str[i] = '\0';
+	if (nb < 0)
 	{
 		str[0] = '-';
-		n = -n;
+		nb = -nb;
 	}
-	str[i] = '\0';
 	i--;
-	while (n > 0)
+	while (nb > 0)
 	{
-		str[i] = (n % 10) + '0';
-		n /= 10;
+		str[i] = (nb % 10) + '0';
+		nb /= 10;
 		i--;
 	}
 	return (str);
