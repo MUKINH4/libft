@@ -30,17 +30,15 @@ make re       # rebuild
 
 - **Using the library**: Link `libft.a` into your projects with `-L`/`-l` or by copying the static library and header into your project include/lib paths. Example:
 
-```bash
-gcc -L. -lft -I. your_program.c -o your_program
-```
+	Include the header in your source file:
+	```c
+	#include "libft.h"
+	```
+	Compile your project linking the library:
 
-- **Tests**: A test harness is provided in the [libftTester](libftTester/README.md) folder. Typical usage:
-
-```bash
-cd libftTester
-make
-# Follow instructions in libftTester/README.md to run the test suite
-```
+	```bash
+	cc -L. -lft -I. your_program.c -o your_program
+	```
 
 **Resources**
 - **References**:
